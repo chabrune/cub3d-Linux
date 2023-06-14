@@ -6,7 +6,7 @@
 /*   By: chabrune <chabrune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 14:52:47 by emuller           #+#    #+#             */
-/*   Updated: 2023/06/14 01:16:45 by chabrune         ###   ########.fr       */
+/*   Updated: 2023/06/14 02:33:02 by chabrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	put_map_pixel(t_game_2d *game)
 {
 	uint32_t i = 0;
 	uint32_t y = 0;
-	mlx_image_t *map;
+	// mlx_image_t *map;
 	
-	map = mlx_new_image(game->mlx, 64, 64);
+	// map = mlx_new_image(game->mlx, 64, 64);
 
 	i = 0;
 	while (game->map[i])
