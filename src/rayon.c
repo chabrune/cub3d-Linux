@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   rayon.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chabrune <chabrune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 15:08:21 by emuller           #+#    #+#             */
-/*   Updated: 2023/06/24 02:05:23 by chabrune         ###   ########.fr       */
+/*   Created: 2023/06/14 17:54:04 by chabrune          #+#    #+#             */
+/*   Updated: 2023/06/24 02:02:08 by chabrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	write_wrong_num_ar(int ar)
+void put_rayon_pixel(t_game_2d *game)
 {
-	if (ar == 1)
-		printf("Error \ncub3d needs a map to run\n");
-	if (ar >= 3)
-		printf("Error \ncub3d can only read one map\n");
-	return (1);
-}
+    uint32_t i;
+    uint32_t y;
 
-void	exit_error(char	**map, char *msg)
-{
-	if (msg)
-		printf("Error \n%s\n", msg);
-	if (map)
-		free_tab(map);
-	exit(1);
+    i = -1;
+    while (++i < 4)
+    {
+        y = -1;
+        while (++y < 32)
+        {
+            double rayX = game->pdx + y  * cos(game->pa);
+            double rayY = game->pdy + y  * sin(game->pa);
+            mlx_put_pixel(game->window, (uint32_t)rayY, (uint32_t)rayX, get_rgba(0, 255, 0, 255));
+        }
+    }
 }

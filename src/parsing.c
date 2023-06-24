@@ -6,11 +6,68 @@
 /*   By: chabrune <chabrune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 16:59:55 by emuller           #+#    #+#             */
-/*   Updated: 2023/06/13 21:51:01 by chabrune         ###   ########.fr       */
+/*   Updated: 2023/06/24 02:05:31 by chabrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	get_len_max(char **map, int len, int k)
+{
+	int line_length;
+	int	tmp;
+
+	tmp = 0;
+	line_length = ft_strlen(map[0]);
+	while (k < len)
+	{
+		tmp = ft_strlen(map[k]);
+		if (tmp > line_length)
+			line_length = tmp;
+		k++;
+	}
+	return (line_length);
+}
+char	*ft_strdup_new(char *s1, int len)
+{
+	char	*s;
+	int		i;
+
+	i = 0;
+	s = ft_calloc(sizeof(char), len + 1);
+	if (!s)
+		return (0);
+	while (s1[i])
+	{
+		s[i] = s1[i];
+		i++;
+	}
+	if (ft_strchr(s1, '\n'))
+		s[--i] = '1';
+	while (i <= len)
+		s[i++] = '1';
+	s[i] = 0;
+	return (s);
+}
+
+void	fill_spaces(char ***map)
+{
+	int i;
+	int	j;
+
+	i = 0;
+	while ((*map)[i])
+	{
+		j = 0;
+		while ((*map)[i][j])
+		{
+			if ((*map)[i][j] == ' ')
+				(*map)[i][j] = '1';
+			j++;
+		}
+		i++;
+	}
+}
 
 char	**extract_map_from_file(char **map_full_file)
 {
@@ -18,6 +75,7 @@ char	**extract_map_from_file(char **map_full_file)
 	int		i;
 	int		j;
 	int		len_map;
+	int		len_line;
 
 	i = 0;
 	while (map_full_file[i] && !find_beginning_map(map_full_file[i]))
@@ -26,9 +84,10 @@ char	**extract_map_from_file(char **map_full_file)
 	check_closed_map(i, map_full_file);
 	j = 0;
 	map = ft_calloc(sizeof(char *), len_map + 1);
+	len_line = get_len_max(map_full_file, len_map, i);
 	while (map_full_file[i] && line_empty(map_full_file[i]) != 1)
 	{
-		map[j] = ft_strdup(map_full_file[i]);
+		map[j] = ft_strdup_new(map_full_file[i], len_line);
 		i++;
 		j++;
 	}
@@ -38,6 +97,7 @@ char	**extract_map_from_file(char **map_full_file)
 		free_tab(map_full_file);
 		exit(1);
 	}
+	fill_spaces(&map);
 	return (map);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emuller <emuller@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chabrune <chabrune@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 16:57:31 by emuller           #+#    #+#             */
-/*   Updated: 2023/06/05 18:37:07 by emuller          ###   ########.fr       */
+/*   Updated: 2023/06/24 02:02:26 by chabrune         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,37 @@ int	is_valid_char(char c)
 		|| c == 'S' || c == 'W')
 		return (1);
 	return (0);
+}
+
+void get_map_dimensions(char **map, t_game_2d *game)
+{
+	int i;
+	int line_length;
+
+	i = -1;
+	line_length = 0;
+    while (map[++i])
+    {
+        line_length = ft_strlen(map[i]);
+        if (line_length > game->width)
+            game->width = line_length;
+        (game->height)++;
+    }
+}
+
+char	**dup_tab(char **tab)
+{
+	char	**new_tab;
+	int		i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	new_tab = ft_calloc(sizeof(char *), i + 1);
+	if (!new_tab)
+		return (0);
+	i = -1;
+	while (tab[++i])
+		new_tab[i] = ft_strdup(tab[i]);
+	return (new_tab);
 }

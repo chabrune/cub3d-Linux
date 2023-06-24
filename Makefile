@@ -6,18 +6,22 @@
 #    By: chabrune <chabrune@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/03 14:57:00 by emuller           #+#    #+#              #
-#    Updated: 2023/06/13 22:23:23 by chabrune         ###   ########.fr        #
+#    Updated: 2023/06/24 02:03:02 by chabrune         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = 		src/main.c \
-			src/check_map.c \
-			src/get_next_line.c \
-			src/get_next_line_utils.c \
-			src/read_map.c \
-			src/error.c \
-			src/utils.c \
-			src/parsing.c \
+SRCS = 	src/main.c \
+		src/check_map.c \
+		src/get_next_line.c \
+		src/get_next_line_utils.c \
+		src/read_map.c \
+		src/error.c \
+		src/utils.c \
+		src/parsing.c \
+		src/key_hook.c \
+		src/pixel.c \
+		src/player.c \
+		src/rayon.c
 
 OBJS =		$(SRCS:.c=.o)
 
