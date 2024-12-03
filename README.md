@@ -48,8 +48,3 @@ Cub3D est une implémentation d'un moteur de rendu 3D utilisant la technique du 
 
 ---
 *Projet réalisé dans le cadre du cursus de l'école 42* 🚀
-
-Citations:
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/8881945/30cfa182-7ad2-4d0c-a551-ae7f567f2063/paste.txt
-[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/8881945/0f010cb3-85d6-49de-b0b2-ac30bddb7869/paste.txt
-[3] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/8881945/5d10a830-2180-470e-9b6d-ee55314b5e31/paste-2.txt
